@@ -11,5 +11,13 @@ const ArticleSchema = new mongoose.Schema({
     },
     
 })
+ArticleSchema.methods.toJSON = function () {
+    var article = this
+    const newUser = article.toObject()
+    delete newUser.password
+    delete newUser.tokens
+    delete newUser._id
+    return newUser
+}
  var Articles = mongoose.model('Articles', ArticleSchema)
  module.exports = Articles;
