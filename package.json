@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node server/server.js",
-    "dev":"env-cmd -f ./config/dev.env node server/server.js",
+    "dev":"env-cmd -f ./config/prod.env node server/server.js",
     "test": "env-cmd -f ./config/test.env jest --watchAll"
   },
   "jest":{

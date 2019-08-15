@@ -29,6 +29,13 @@ var userSchema = new mongoose.Schema({
     }
 
 })
+userSchema.methods.toJSON = function () {
+    var user = this
+    const newUser = user.toObject()
+    delete newUser.password
+    delete newUser.tokens
+    return newUser
+}
 
  var User = mongoose.model('User',userSchema)
 
