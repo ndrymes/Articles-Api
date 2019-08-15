@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "env-cmd -f ./config/dev.env node server/app.js",
+    "start": "node server/app.js",
+    "dev":"env-cmd -f ./config/dev.env node server/app.js",
     "test": "env-cmd -f ./config/test.env jest --watchAll"
   },
   "jest":{
