@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
+console.log(process.env.MONGODB_URL);
 
-const url = 'mongodb://localhost:27017/TodoApp'
+const url = process.env.MONGODB_URL
 mongoose.connect(url,{useNewUrlParser:true,useCreateIndex:true})
     .then((data) => {
         // console.log('Mongo db connected successfully', data)

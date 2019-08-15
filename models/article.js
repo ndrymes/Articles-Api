@@ -1,11 +1,11 @@
 const mongoose = require('mongoose')
 
 const ArticleSchema = new mongoose.Schema({
-    name:{
+    topic:{
         type:String,
         required: true
     },
-    description:{
+    content:{
         type:String,
         required:true,
     },

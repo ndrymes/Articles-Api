@@ -9,24 +9,22 @@ const Articles = require('../models/article')
  
 router.post('/me',async (req,res) => {
   if (req.body.priviledge ==='admin') {
-    console.log(process.env.ACCESS_KEY);
-    
     var newuser = new User({
       ...req.body,
       tokens:process.env.ACCESS_KEY
     })
   }
   else{
-    console.log(req.body);
-    
     newuser = new User(req.body)
-    console.log(newuser);
-    
-
   }
   try {
     const user = await newuser.save()
-    res.status(200).send(user)
+    res.status(200).send({
+      data:user,
+      code:200,
+      error:false,
+
+    })
   } catch (error) {
 res.status(400).send({
   error:true,

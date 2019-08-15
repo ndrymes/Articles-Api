@@ -2,17 +2,16 @@ const User = require('../models/user')
 const auth = async(req,res,next) => {
     const email = req.params.email
     const tokens = process.env.ACCESS_KEY
-    console.log(tokens);
-    
-    if ( req.headers.code!= tokens ){
-        throw new Error()
-    }
+
+    console.log(email);
+        
     try {
+        if ( req.headers.code!= tokens ){
+            throw new Error()
+        }
         const user = await User.findOne({
-            tokens,
             email
         })
-        console.log(user);
         
         if (user.priviledge!='admin') {
             throw new Error()

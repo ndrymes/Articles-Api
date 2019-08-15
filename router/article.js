@@ -3,16 +3,24 @@ const auth = require('../middleware/auth')
 const express = require('express')
  const router = express.Router()
  router.post('/me/:email',auth, async(req,res) => {
-    //    var allowedInput = _.pick(req.body,['name','email'])
+    const {topic,content} =req.body
+    const params ={
+        topic,
+        content
+    }
     //    console.log(allowedInput);
    
     console.log(req.body);
     console.log(req.headers.code)
-    var newarticles = new Articles(req.body)
+    var newarticles = new Articles(params)
     try {
         
       const articles= await newarticles.save()
-       res.status(200).send(articles)
+       res.status(200).send({
+           data:articles,
+           code:200,
+           error:false
+       })
     } catch (error) {
     res.status(400).send({
         error: true,
