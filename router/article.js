@@ -45,6 +45,20 @@ const express = require('express')
          
 
      })
+     router.get('/:id',async(req,res)=>{
+         const id = req.params.id
+         try {
+            const articles= await Articles.findById(id)
+            if (!articles) {
+                res.status(400).send('not found')
+            }
+    
+            res.status(200).send(articles)
+         } catch (error) {
+             res.status(500).send('internal server error')
+         }
+        
+     })
 
 router.delete('/delete/:id/:email',auth, async(req,res) => {
     const id = req.params.id
