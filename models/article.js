@@ -16,7 +16,6 @@ ArticleSchema.methods.toJSON = function () {
     const newUser = article.toObject()
     delete newUser.password
     delete newUser.tokens
-    delete newUser._id
     return newUser
 }
  var Articles = mongoose.model('Articles', ArticleSchema)
